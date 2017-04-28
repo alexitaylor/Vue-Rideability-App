@@ -7,6 +7,8 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import fs from 'fs'
 
+import darkSky from './darkSky'
+
 import router from './router'
 import config from '../../webpack.config'
 
@@ -20,13 +22,13 @@ const app = express()
 // mongoose.connect('mongodb://localhost/users');
 
 // For more info: https://nodejs.org/api/process.html#process_process_env
-var mongoConnection = 'mongodb://localhost/users' || process.env.MONGODB_URL;
-if (!mongoConnection) {
-  console.log("Please define MONGODB_URL environment variable");
-  process.exit(1);
-}
-console.log('connecting to ' + mongoConnection);
-mongoose.connect(mongoConnection);
+// var mongoConnection = 'mongodb://localhost/users' || process.env.MONGODB_URL;
+// if (!mongoConnection) {
+//   console.log("Please define MONGODB_URL environment variable");
+//   process.exit(1);
+// }
+// console.log('connecting to ' + mongoConnection);
+// mongoose.connect(mongoConnection);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -50,25 +52,24 @@ app.use(webpackHotMiddleware(compiler))
 Thanks to:
 http://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue */
 app.use(function(req, res, next) {
-
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4000');
-
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
   // Request headers you wish to allow
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
-
   // Pass to next layer of middleware
   next();
 });
 
 app.use('/', router)
+
+
+darkSky.getWeather()
+
 
 // app.get(/.../, function(req, res) {
 // });

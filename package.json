@@ -45,7 +45,11 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "dark-sky": "^1.0.10",
+    "dark-sky-api": "^0.5.28",
+    "node-geocoder": "^3.16.0",
     "vue-axios": "^2.0.2",
+    "vue-material": "^0.7.1",
     "vuex": "^2.3.1"
   }
 }

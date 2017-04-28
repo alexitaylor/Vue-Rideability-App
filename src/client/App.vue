@@ -1,6 +1,7 @@
 <template>
   <div class="app full-height">
     <h1>{{ message }}</h1>
+    <md-button class="md-raised md-primary">Primary</md-button>
     <div>
       <img src="./assets/Octocat.png">
       <hello></hello>
@@ -9,7 +10,11 @@
 </template>
 
 <script>
+
 import Hello from './components/Hello'
+// import VueMaterial from 'vue-material'
+
+// Vue.use(VueMaterial)
 
 export default {
   name: 'app',

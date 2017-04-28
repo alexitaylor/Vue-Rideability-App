@@ -7,6 +7,11 @@ import Hello from './components/Hello'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import VueMaterial from 'vue-material'
+// import './node_modules/vue-material/dist/vue-material.css'
+
+Vue.use(VueMaterial)
+
 Vue.use(axios, VueAxios)
 
 Vue.config.debug = true
