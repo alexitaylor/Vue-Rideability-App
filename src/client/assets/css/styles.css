@@ -1,0 +1,65 @@
+/* Buttons */
+
+.btnRandom {
+    -moz-transition: all, ease-in-out 0.5s;
+    -o-transition: all, ease-in-out 0.5s;
+    -webkit-transition: all, ease-in-out 0.5s;
+    transition: all, ease-in-out 0.5s;
+}
+
+.btnRandom {
+    font-size: 1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1em 1.6em;
+    margin: 3%;
+    border: none;
+    background: #fff;
+    position: relative;
+    display: inline-block;
+    letter-spacing: .0875em;
+    font-weight: 500;
+    border-radius: 100px;
+    outline: 0;
+}
+
+
+.btnRandom:hover {
+    color: #fff;
+    background: #41B883;
+    text-decoration: none;
+    outline: 0;
+}
+
+.z-depth-1-half,
+.btnRandom {
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+.z-depth-3,
+.btnRandom:hover {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Change Materialize Tabs to Green Color */
+
+.tabs .tab a {
+    color: #41B883;
+}
+
+.tabs .tab a:hover {
+  color: #41B883;
+}
+
+.tabs .tab.disabled a {
+  color: #41B883;
+  cursor: default;
+}
+
+.tabs .indicator {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: #41B883;
+  will-change: left, right;
+}
