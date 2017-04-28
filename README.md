@@ -1,5 +1,6 @@
-Vue + Express boilerplate for development
+MVP - Rideability Weather App
 =========================================
+## A weather app built by cyclists for cyclists ##
 
 ## Keywords
 
@@ -8,33 +9,6 @@ Vue + Express boilerplate for development
 - Nodemon
 - Webpack
 - Npm
-
-
-## Structure
-
-```
-.
-├── LICENSE
-├── README.md
-├── index.js
-├── nodemon.json
-├── package.json
-├── src
-│   ├── client
-│   │   ├── App.vue
-│   │   ├── components
-│   │   │   └── Hello.vue
-│   │   └── index.js
-│   └── server
-│       ├── index.js
-│       ├── public
-│       │   └── favicon.ico
-│       ├── router.js
-│       └── views
-│           ├── error.jade
-│           └── index.jade
-└── webpack.config.js
-```
 
 ## Usage
 
