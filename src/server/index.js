@@ -99,7 +99,11 @@ let printUser;
 
 app.get('/user', function(req, res) {
   console.log('GOT SOMETHING')
-  res.send(202)
+  console.log(req.query)
+  workers.retrieveUser(req.query.username, (err, user) => {
+    if (err) throw err
+    res.json(user)
+  })
 });
 
 // app.post(/.../, function(req, res) {

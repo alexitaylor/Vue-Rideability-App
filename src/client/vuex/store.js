@@ -53,7 +53,11 @@ const actions = {
   setWeather: ({ commit }) => commit('setWeather'),
   setUserPreferences: ({ commit }) => commit('setUserPreferences'),
   getUser: ({ commit }) => {
-    axios.get('http://127.0.0.1:4000/user')
+    axios.get('http://127.0.0.1:4000/user', {
+      params: {
+        username: state.usernameInput
+      }
+    })
     .then(response => {
       console.log('SUCCESS')
       console.log(response.data)
