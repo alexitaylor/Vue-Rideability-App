@@ -106,6 +106,13 @@ app.get('/user', function(req, res) {
   })
 });
 
+app.post('/user', function(req, res) {
+  console.log('POST SOMETHING')
+  console.log(req.body)
+  workers.saveUser(req.body.userPreferences)
+  res.send(200)
+});
+
 // app.post(/.../, function(req, res) {
 // });
 

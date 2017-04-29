@@ -3,8 +3,9 @@
     <!-- <h1>{{ message }}</h1> -->
     <div>
       <img src="./assets/Octocat.png">
-      <UserSearch></UserSearch>
+      <!-- <UserSearch></UserSearch> -->
       <hello></hello>
+      <UsersPref></UsersPref>
     </div>
   </div>
 </template>
@@ -13,13 +14,15 @@
 import Hello from './components/Hello'
 import Weather from './components/Weather'
 import UserSearch from './components/UserSearch'
+import UsersPref from './components/UsersPref'
 
 export default {
   name: 'app',
   components: {
     Hello,
     Weather,
-    UserSearch
+    UserSearch,
+    UsersPref
   },
   data () {
     return {

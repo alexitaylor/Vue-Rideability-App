@@ -12,6 +12,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import _ from 'lodash'
 
 Vue.use(Vuex)
 Vue.use(axios, VueAxios)
@@ -22,7 +23,7 @@ const state = {
   count: 0,
   usernameInput: '',
   weather: [],
-  userPreferences: {},
+  userPreferences: [],
   data: []
 }
 
@@ -35,6 +36,10 @@ const mutations = {
   handleUserSearch(state, { user }) {
     console.log('I was clicked ', user)
     state.usernameInput = user
+  },
+  handleUserPref(state, { pref }) {
+    console.log('I was clicked PREF', pref)
+    state.userPreferences = pref
   },
   setWeather: (state, { list }) => {
     console.log(list)
@@ -50,6 +55,7 @@ const mutations = {
 // asynchronous operations.
 const actions = {
   handleUserSearch: ({ commit }) => commit('handleUserSearch'),
+  handleUserPref: ({ commit }) => commit('handleUserPref'),
   setWeather: ({ commit }) => commit('setWeather'),
   setUserPreferences: ({ commit }) => commit('setUserPreferences'),
   getUser: ({ commit }) => {
@@ -62,6 +68,18 @@ const actions = {
       console.log('SUCCESS')
       console.log(response.data)
       commit('setUserPreferences', { pref: response.data })
+    }, (err) => {
+      console.log(err)
+    })
+  },
+  sendUserPref: ({ commit }) => {
+    axios.post('http://127.0.0.1:4000/user', {
+      userPreferences: _.assign(state.userPreferences, {username: 'Alexi'})
+    })
+    .then(response => {
+      console.log('SUCCESS POSTED')
+      console.log(response.data)
+      // commit('setUserPreferences', { pref: response.data })
     }, (err) => {
       console.log(err)
     })

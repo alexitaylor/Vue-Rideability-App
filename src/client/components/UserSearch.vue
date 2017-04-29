@@ -23,6 +23,7 @@
     </v-container>
     <h2>{{ user }}</h2>
     <h3>{{ getUsername }}</h3>
+    <p>{{ $store.state.userPreferences.length }} </p>
   </div>
 </template>
 
