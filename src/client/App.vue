@@ -1,29 +1,30 @@
 <template>
   <div class="app full-height">
-    <h1>{{ message }}</h1>
-    <md-button class="md-raised md-primary">Primary</md-button>
+    <!-- <h1>{{ message }}</h1> -->
     <div>
       <img src="./assets/Octocat.png">
+      <UserSearch></UserSearch>
       <hello></hello>
     </div>
   </div>
 </template>
 
 <script>
-
 import Hello from './components/Hello'
-// import VueMaterial from 'vue-material'
-
-// Vue.use(VueMaterial)
+import Weather from './components/Weather'
+import UserSearch from './components/UserSearch'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Hello,
+    Weather,
+    UserSearch
   },
   data () {
     return {
-      message: 'Express + Vue + MongoDB Boilerplate'
+      message: 'Express + Vue + MongoDB Boilerplate',
+      content: ['', 'test1', 'test2', 'test3']
     }
   }
 }
@@ -49,5 +50,8 @@ body {
 
 h1 {
   color: #41B883;
+  text-transform: uppercase;
+  font-size: 3em !important;
 }
+
 </style>

@@ -91,14 +91,16 @@ let rideableRender = workers.rideableRender(renderedMore, userPreferences)
 // workers.retrieveUser('Nicolas')
 let printUser;
 
-// Retrieve User from database and renders hourly weather data to rideable or not
-workers.retrieveUser('Nicolas', (err, user) => {
-  if (err) throw err
-  console.log(workers.rideableRender(renderedMore, user[0]))
-})
+// Retrieve User from DB and renders hourly weather data w/ rideable or not attribute
+// workers.retrieveUser('Nicolas', (err, user) => {
+//   if (err) throw err
+//   console.log(workers.rideableRender(renderedMore, user[0]))
+// })
 
-// app.get(/.../, function(req, res) {
-// });
+app.get('/user', function(req, res) {
+  console.log('GOT SOMETHING')
+  res.send(202)
+});
 
 // app.post(/.../, function(req, res) {
 // });
