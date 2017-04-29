@@ -65,7 +65,7 @@ h1, h2 {
 }
 
 h1 {
-  color: #41B883;
+  color: #1976D2;
   text-transform: uppercase;
   font-size: 3em !important;
 }

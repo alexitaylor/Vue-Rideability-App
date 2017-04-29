@@ -3,26 +3,27 @@
     <!-- <h1>{{ message }}</h1> -->
     <div>
       <img src="./assets/Octocat.png">
-      <!-- <UserSearch></UserSearch> -->
       <hello></hello>
-      <UsersPref></UsersPref>
+      <!-- <UserSearch></UserSearch> -->
+      <!-- <UsersPref></UsersPref> -->
+      <weather></weather>
     </div>
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello'
-import Weather from './components/Weather'
 import UserSearch from './components/UserSearch'
 import UsersPref from './components/UsersPref'
+import Weather from './components/Weather'
 
 export default {
   name: 'app',
   components: {
     Hello,
-    Weather,
     UserSearch,
-    UsersPref
+    UsersPref,
+    Weather
   },
   data () {
     return {
@@ -52,7 +53,7 @@ body {
 }
 
 h1 {
-  color: #41B883;
+  color: #1976D2 !important;
   text-transform: uppercase;
   font-size: 3em !important;
 }

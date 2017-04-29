@@ -19,8 +19,8 @@ const options = {
 const geocoder = NodeGeocoder(options)
 
 module.exports = {
-  getWeather: () => {
-    geocoder.geocode('San Francisco')
+  getWeather: (city, callback) => {
+    geocoder.geocode(city)
       .then(res => {
         return { long: res[0].longitude, lat: res[0].latitude }
       })
@@ -31,9 +31,10 @@ module.exports = {
           .get()
           .then(res => {
             var json = JSON.stringify(res.hourly)
-            fs.writeFileSync('data.json', json)
+            // fs.writeFileSync('data.json', json)
             // console.log(res.hourly)
             // res.hourly
+            callback(res.hourly)
             console.log('Success got weather data')
           })
           .catch(err => {

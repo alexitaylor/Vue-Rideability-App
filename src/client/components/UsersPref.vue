@@ -47,9 +47,6 @@
         </v-col>
       </v-row>
     </v-container>
-
-    <h2>{{ userPref }}</h2>
-    <h3>{{ $store.state.userPreferences }}</h3>
   </div>
 </template>
 
@@ -92,7 +89,7 @@ h1, h2 {
 }
 
 h1 {
-  color: #41B883;
+  color: #1976D2;
   text-transform: uppercase;
   font-size: 3em !important;
 }

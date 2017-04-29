@@ -3,9 +3,9 @@ import Router from 'vue-router'
 
 import App from './App'
 import Hello from './components/Hello'
-import Weather from './components/Weather'
 import UserSearch from './components/UserSearch'
 import UsersPref from './components/UsersPref'
+import Weather from './components/Weather'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -31,9 +31,9 @@ Vue.use(Router)
 const router = new Router({
   routes: [
     { name: 'hello', path: '/hello', component: Hello },
-    { name: 'weather', path: '/weather', component: Weather },
     { name: 'usersearch', path: '/usersearch', component: UserSearch },
-    { name: 'userspref', path: '/userspref', component: UsersPref }
+    { name: 'userspref', path: '/userspref', component: UsersPref },
+    { name: 'weather', path: '/weather', component: Weather }
   ]
 })
 

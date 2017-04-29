@@ -24,7 +24,8 @@ const state = {
   usernameInput: '',
   weather: [],
   userPreferences: [],
-  data: []
+  data: [],
+  city: ''
 }
 
 // mutations are operations that actually mutates the state.
@@ -41,9 +42,13 @@ const mutations = {
     console.log('I was clicked PREF', pref)
     state.userPreferences = pref
   },
-  setWeather: (state, { list }) => {
-    console.log(list)
-    state.weather = list
+  handleCitySearch(state, { city }) {
+    console.log('I was clicked WEATHER', city)
+    state.city = city
+  },
+  setWeather: (state, { data }) => {
+    console.log(data)
+    state.weather = data
   },
   setUserPreferences: (state, { pref }) => {
     console.log(pref)
@@ -56,6 +61,7 @@ const mutations = {
 const actions = {
   handleUserSearch: ({ commit }) => commit('handleUserSearch'),
   handleUserPref: ({ commit }) => commit('handleUserPref'),
+  handleCitySearch: ({ commit }) => commit('handleCitySearch'),
   setWeather: ({ commit }) => commit('setWeather'),
   setUserPreferences: ({ commit }) => commit('setUserPreferences'),
   getUser: ({ commit }) => {
@@ -68,6 +74,20 @@ const actions = {
       console.log('SUCCESS')
       console.log(response.data)
       commit('setUserPreferences', { pref: response.data })
+    }, (err) => {
+      console.log(err)
+    })
+  },
+  getWeather: ({ commit }) => {
+    axios.get('http://127.0.0.1:4000/city', {
+      params: {
+        city: state.city
+      }
+    })
+    .then(response => {
+      console.log('SUCCESS')
+      console.log(response.data)
+      commit('setWeather', { data: response.data })
     }, (err) => {
       console.log(err)
     })

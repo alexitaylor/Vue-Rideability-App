@@ -83,7 +83,7 @@ let renderedMore = workers.renderData(parsedData.data)
 let rideableRender = workers.rideableRender(renderedMore, userPreferences)
 
 // console.log(rideableRender)
-// darkSky.getWeather()
+// darkSky.getWeather('San Francisco')
 
 // Save user to MongoDB
 // workers.saveUser(userPreferences)
@@ -104,6 +104,15 @@ app.get('/user', function(req, res) {
     if (err) throw err
     res.json(user)
   })
+});
+
+app.get('/city', function(req, res) {
+  console.log('GOT CITY')
+  console.log(req.query.city)
+  darkSky.getWeather(req.query.city, (data) => {
+    console.log('INSIDE OF CALLBACK YAY! ============')
+    res.json(data)
+  });
 });
 
 app.post('/user', function(req, res) {

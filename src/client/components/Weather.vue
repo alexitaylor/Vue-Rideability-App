@@ -1,27 +1,56 @@
 <template>
   <div class="weather">
-    <v-tabs id="mobile-tabs-1" grow scroll-bars v-bind:model="active">
-      <v-tab-item v-for="i in 7" :key="i" v-bind:href="'#mobile-tabs-1-' + i" ripple slot="activators">
-        Day {{ i }}
-      </v-tab-item>
-      <v-tab-content v-for="i in 3" :key="i" v-bind:id="'mobile-tabs-1-' + i" slot="content">
-        <v-card>
-          <v-card-text>{{ content[i] }}</v-card-text>
-        </v-card>
-      </v-tab-content>
-    </v-tabs>
     <h1>{{ msg }}</h1>
+    <v-container fluid>
+      <v-row row>
+        <v-col xs9>
+          <v-text-field
+            name="input-1"
+            label="Enter City"
+            v-model="city"
+          ></v-text-field>
+        </v-col>
+        <v-col xs3>
+          <div @click="handleCitySearch(city)">
+            <v-btn
+            primary
+            dark
+            class="btn--dark-flat-focused"
+            >SEARCH</v-btn>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+    <p>{{ $store.state.weather }}</p>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'weather',
   data () {
     return {
-      msg: 'testing...'
+      msg: 'Weather!',
+      city: ''
     }
-  }
+  },
+  computed: mapGetters([
+    'getWeather'
+  ]),
+  methods:
+    Object.assign({},
+      mapActions([
+        'handleCitySearch'
+      ]),
+      {
+        handleCitySearch (city) {
+          this.$store.commit('handleCitySearch', { city })
+          this.$store.dispatch('getWeather')
+        }
+      }
+    )
 }
 </script>
 
