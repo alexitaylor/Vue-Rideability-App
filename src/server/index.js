@@ -23,13 +23,13 @@ const app = express()
 // mongoose.connect('mongodb://localhost/users');
 
 // For more info: https://nodejs.org/api/process.html#process_process_env
-// var mongoConnection = 'mongodb://localhost/users' || process.env.MONGODB_URL;
-// if (!mongoConnection) {
-//   console.log("Please define MONGODB_URL environment variable");
-//   process.exit(1);
-// }
-// console.log('connecting to ' + mongoConnection);
-// mongoose.connect(mongoConnection);
+var mongoConnection = 'mongodb://localhost/rideable' || process.env.MONGODB_URL;
+if (!mongoConnection) {
+  console.log("Please define MONGODB_URL environment variable");
+  process.exit(1);
+}
+console.log('connecting to ' + mongoConnection);
+mongoose.connect(mongoConnection);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -69,10 +69,11 @@ app.use(function(req, res, next) {
 app.use('/', router)
 
 let userPreferences = {
-  tempLow: 50,
+  username: 'Nicolas',
+  tempLow: 40,
   tempHigh: 100,
-  windHigh: 20,
-  precipHigh: .5
+  windHigh: 25,
+  precipHigh: .8
 }
 
 let data = fs.readFileSync('data.json')
@@ -81,9 +82,20 @@ let parsedData = JSON.parse(data)
 let renderedMore = workers.renderData(parsedData.data)
 let rideableRender = workers.rideableRender(renderedMore, userPreferences)
 
-console.log(rideableRender)
+// console.log(rideableRender)
 // darkSky.getWeather()
 
+// Save user to MongoDB
+// workers.saveUser(userPreferences)
+
+// workers.retrieveUser('Nicolas')
+let printUser;
+
+// Retrieve User from database and renders hourly weather data to rideable or not
+workers.retrieveUser('Nicolas', (err, user) => {
+  if (err) throw err
+  console.log(workers.rideableRender(renderedMore, user[0]))
+})
 
 // app.get(/.../, function(req, res) {
 // });

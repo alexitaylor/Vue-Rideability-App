@@ -2,7 +2,7 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
   // create a schema
-let user = new Schema({
+let userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   tempLow: Number,
   tempHigh: Number,
@@ -13,7 +13,7 @@ let user = new Schema({
 });
 
 // on every save, add the date
-schemaname.pre('save', function(next) {
+userSchema.pre('save', function(next) {
   // get the current date
   let currentDate = new Date();
 

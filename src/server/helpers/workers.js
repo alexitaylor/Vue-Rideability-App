@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import User from '../../database/User.model';
 
 // Hard Coded for now
 let userPreferences = {
@@ -100,3 +101,29 @@ exports.rideableRender = (data, userInputs) => {
   })
 };
 /* END of checking if rideable or not */
+
+/* Save user's preferences to MongoDB*/
+exports.saveUser = (userInput) => {
+  let user = new User({
+    username: userInput.username,
+    tempLow: userInput.tempLow,
+    tempHigh: userInput.tempHigh,
+    windHigh: userInput.windHigh,
+    precipHigh: userInput.precipHigh
+  });
+
+  // Save new user
+  user.save(err => {
+    if (err) throw err
+    console.log('User saved successfully')
+  });
+};
+
+exports.retrieveUser = (userName, callback) => {
+  User.find({ username: userName }, (err, data) => {
+    if (err)  callback(err, null)
+    callback(err, data)
+  })
+};
+
+/*END of saving user to MongoDB*/

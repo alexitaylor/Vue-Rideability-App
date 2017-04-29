@@ -1,6 +1,6 @@
 let mongoose = require('mongoose');
 // connect to a MongoDB database
-mongoose.connect('mongodb://localhost/users');
+mongoose.connect('mongodb://localhost/rideable');
 
 // grab the user model
 let User = require('./User.model');
@@ -12,10 +12,10 @@ let user = new User({
   tempHigh: 100,
   windHigh: 20,
   precipHigh: .5
-})
+});
 
 // Save new user
 user.save(err => {
   if (err) throw err
   console.log('User saved successfully')
-})
+});
