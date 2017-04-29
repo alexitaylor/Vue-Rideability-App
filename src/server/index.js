@@ -68,19 +68,12 @@ app.use(function(req, res, next) {
 
 app.use('/', router)
 
-let userPreferences = {
-  username: 'Nicolas',
-  tempLow: 40,
-  tempHigh: 100,
-  windHigh: 25,
-  precipHigh: .8
-}
 
-let data = fs.readFileSync('data.json')
-let parsedData = JSON.parse(data)
+// let data = fs.readFileSync('data.json')
+// let parsedData = JSON.parse(data)
 
-let renderedMore = workers.renderData(parsedData.data)
-let rideableRender = workers.rideableRender(renderedMore, userPreferences)
+// let renderedMore = workers.renderData(parsedData.data)
+// let rideableRender = workers.rideableRender(renderedMore, userPreferences)
 
 // console.log(rideableRender)
 // darkSky.getWeather('San Francisco')
@@ -107,12 +100,18 @@ app.get('/user', function(req, res) {
 });
 
 app.get('/city', function(req, res) {
+  let userPreferences = JSON.parse(req.query.userPreferences)
   console.log('GOT CITY')
   console.log(req.query.city)
+  console.log(req.query.userPreferences)
   darkSky.getWeather(req.query.city, (data) => {
     console.log('INSIDE OF CALLBACK YAY! ============')
-    res.json(data)
+    let renderedData = workers.renderData(data.data)
+    let rideableData = workers.rideableRender(renderedData, userPreferences)
+    console.log(rideableData)
+    res.json(rideableData)
   });
+  // res.send(200)
 });
 
 app.post('/user', function(req, res) {

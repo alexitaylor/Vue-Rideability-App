@@ -23,7 +23,13 @@ const state = {
   count: 0,
   usernameInput: '',
   weather: [],
-  userPreferences: [],
+  userPreferences: {
+    username: 'Nicolas',
+    tempLow: 40,
+    tempHigh: 100,
+    windHigh: 25,
+    precipHigh: 0.8
+  },
   data: [],
   city: ''
 }
@@ -81,7 +87,8 @@ const actions = {
   getWeather: ({ commit }) => {
     axios.get('http://127.0.0.1:4000/city', {
       params: {
-        city: state.city
+        city: state.city,
+        userPreferences: state.userPreferences
       }
     })
     .then(response => {
