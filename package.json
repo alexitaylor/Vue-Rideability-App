@@ -47,6 +47,7 @@
     "axios": "^0.16.1",
     "dark-sky": "^1.0.10",
     "dark-sky-api": "^0.5.28",
+    "lodash": "^4.17.4",
     "node-geocoder": "^3.16.0",
     "vue-axios": "^2.0.2",
     "vue-material": "^0.7.1",

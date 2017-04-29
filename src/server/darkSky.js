@@ -1,6 +1,7 @@
 'use strict';
-const DarkSky = require('dark-sky')
+import DarkSky from 'dark-sky'
 const forecast = new DarkSky('f818aa39d9464507ac0601043b1c14db')
+import fs from 'fs'
 
 /* Node library for geocoding and reverse geocoding. Can be used as a nodejs library
 https://www.npmjs.com/package/node-geocoder
@@ -29,7 +30,11 @@ module.exports = {
           .extendHourly(true)
           .get()
           .then(res => {
-            console.log(res.hourly)
+            var json = JSON.stringify(res.hourly)
+            fs.writeFileSync('data.json', json)
+            // console.log(res.hourly)
+            // res.hourly
+            console.log('Success got weather data')
           })
           .catch(err => {
             console.log(err)

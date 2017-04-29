@@ -8,6 +8,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 import fs from 'fs'
 
 import darkSky from './darkSky'
+import workers from './helpers/workers'
 
 import router from './router'
 import config from '../../webpack.config'
@@ -67,8 +68,21 @@ app.use(function(req, res, next) {
 
 app.use('/', router)
 
+let userPreferences = {
+  tempLow: 50,
+  tempHigh: 100,
+  windHigh: 20,
+  precipHigh: .5
+}
 
-darkSky.getWeather()
+let data = fs.readFileSync('data.json')
+let parsedData = JSON.parse(data)
+
+let renderedMore = workers.renderData(parsedData.data)
+let rideableRender = workers.rideableRender(renderedMore, userPreferences)
+
+console.log(rideableRender)
+// darkSky.getWeather()
 
 
 // app.get(/.../, function(req, res) {
