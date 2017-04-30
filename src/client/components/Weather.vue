@@ -21,19 +21,28 @@
         </v-col>
       </v-row>
     </v-container>
-    <p>{{ $store.state.weather }}</p>
+    <ul>
+      <li v-for="data in $store.state.weather">
+        <p v-bind:class="[data.rideable ? rideable : nonRideable]">{{ data.time | moment }}</p>
+      </li>
+    </ul>
+    <!-- <p>{{ $store.state.weather }}</p> -->
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import moment from 'moment'
+moment().format()
 
 export default {
   name: 'weather',
   data () {
     return {
       msg: 'Weather!',
-      city: ''
+      city: '',
+      rideable: 'rideable',
+      nonRideable: 'nonRideable'
     }
   },
   computed: mapGetters([
@@ -50,7 +59,12 @@ export default {
           this.$store.dispatch('getWeather')
         }
       }
-    )
+    ),
+  filters: {
+    moment: function (date) {
+      return moment.unix(date).format('dddd h:mm A')
+    }
+  }
 }
 </script>
 
@@ -58,4 +72,24 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 2em;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.rideable {
+  color: green;
+}
+
+.nonRideable{
+  color: red;
+}
+
 </style>

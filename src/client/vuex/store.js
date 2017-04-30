@@ -7,6 +7,13 @@ AND
 VEUX: A Centralized State Management for Vue.js.
 https://github.com/vuejs/vuex
 */
+// {
+//     username: 'Nicolas',
+//     tempLow: 60,
+//     tempHigh: 100,
+//     windHigh: 6,
+//     precipHigh: 0.2
+//   }
 
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -23,13 +30,7 @@ const state = {
   count: 0,
   usernameInput: '',
   weather: [],
-  userPreferences: {
-    username: 'Nicolas',
-    tempLow: 40,
-    tempHigh: 100,
-    windHigh: 25,
-    precipHigh: 0.8
-  },
+  userPreferences: '',
   data: [],
   city: ''
 }
@@ -101,7 +102,7 @@ const actions = {
   },
   sendUserPref: ({ commit }) => {
     axios.post('http://127.0.0.1:4000/user', {
-      userPreferences: _.assign(state.userPreferences, {username: 'Alexi'})
+      userPreferences: _.assign(state.userPreferences, {username: state.usernameInput})
     })
     .then(response => {
       console.log('SUCCESS POSTED')

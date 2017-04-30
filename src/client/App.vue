@@ -4,8 +4,8 @@
     <div>
       <img src="./assets/Octocat.png">
       <hello></hello>
-      <!-- <UserSearch></UserSearch> -->
-      <!-- <UsersPref></UsersPref> -->
+      <UserSearch></UserSearch>
+      <UsersPref></UsersPref>
       <weather></weather>
     </div>
   </div>
