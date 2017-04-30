@@ -105,7 +105,6 @@ app.get('/city', function(req, res) {
   console.log(req.query.city)
   console.log(req.query.userPreferences)
   darkSky.getWeather(req.query.city, (data) => {
-    console.log('INSIDE OF CALLBACK YAY! ============')
     let renderedData = workers.renderData(data.data)
     let rideableData = workers.rideableRender(renderedData, userPreferences)
     console.log(rideableData)
