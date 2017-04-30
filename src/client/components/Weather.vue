@@ -25,6 +25,34 @@
         <p v-bind:class="[data.rideable ? rideable : nonRideable]">{{ data.time | moment }}</p>
       </li>
     </ul> -->
+      <v-row v-if="$store.state.weather.length > 0">
+        <v-col xs4 class="col">
+          <v-card>
+            <v-card-text>DATE</v-card-text>
+          </v-card>
+        </v-col>
+        <v-col xs2 class="col">
+          <v-card>
+            <v-card-text>Chance of Rain</v-card-text>
+          </v-card>
+        </v-col>
+        <v-col xs2 class="col">
+          <v-card>
+            <v-card-text>Temp</v-card-text>
+          </v-card>
+        </v-col>
+        <v-col xs2 class="col">
+          <v-card>
+            <v-card-text>Wind Speed</v-card-text>
+          </v-card>
+        </v-col>
+        <v-col xs2 class="col">
+          <v-card>
+            <v-card-text>Wind Direction</v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+
       <v-row v-for="data in $store.state.weather">
         <v-col xs4 class="col">
           <v-card v-bind:class="[data.rideable ? rideable : nonRideable]">
@@ -43,12 +71,12 @@
         </v-col>
         <v-col xs2 class="col">
           <v-card v-bind:class="[data.rideable ? rideable : nonRideable]">
-            <v-card-text>{{ data.temperature }}</v-card-text>
+            <v-card-text>{{ Math.round(data.temperature) }}°</v-card-text>
           </v-card>
         </v-col>
         <v-col xs2 class="col">
           <v-card v-bind:class="[data.rideable ? rideable : nonRideable]">
-            <v-card-text>{{ data.windSpeed }}</v-card-text>
+            <v-card-text>{{ Math.round(data.windSpeed) }}mph</v-card-text>
           </v-card>
         </v-col>
         <v-col xs2 class="col">
