@@ -1,6 +1,6 @@
 <template>
   <div class="weather">
-    <h1>{{ msg }}</h1>
+    <h1>{{ msg }}: {{ $store.state.city }}</h1>
     <v-container fluid>
       <v-row row>
         <v-col xs9>
@@ -39,7 +39,7 @@ export default {
   name: 'weather',
   data () {
     return {
-      msg: 'Weather!',
+      msg: 'Weather',
       city: '',
       rideable: 'rideable',
       nonRideable: 'nonRideable'

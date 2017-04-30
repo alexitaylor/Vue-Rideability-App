@@ -7,14 +7,6 @@ AND
 VEUX: A Centralized State Management for Vue.js.
 https://github.com/vuejs/vuex
 */
-// {
-//     username: 'Nicolas',
-//     tempLow: 60,
-//     tempHigh: 100,
-//     windHigh: 6,
-//     precipHigh: 0.2
-//   }
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
@@ -124,15 +116,6 @@ const actions = {
       console.log(err)
     })
   }
-  // getUsersRepos: ({ commit }) => {
-  //   axios.post('http://127.0.0.1:4000/repos', {username: state.usernameInput})
-  //   .then((response) => {
-  //     console.log('SUCCESS POSTED', response.data)
-  //     commit('setWeather', { list: response.data })
-  //   }, (err) => {
-  //     console.log(err)
-  //   })
-  // }
 }
 
 // getters are functions
