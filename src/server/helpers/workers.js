@@ -64,10 +64,17 @@ exports.filterKeys = (obj) => {
   }, {})
 };
 
-exports.renderData = (arr) => {
+exports.filterWindBearing = (arr) => {
   return _.map(arr, (obj, idx) => {
-    return exports.filterKeys(obj)
+    obj.windBearing = exports.getCardinal(obj.windBearing)
+    return obj
   })
+}
+
+exports.renderData = (arr) => {
+  return exports.filterWindBearing(_.map(arr, (obj, idx) => {
+    return exports.filterKeys(obj)
+  }))
 };
 /* END of filtering/rendering data */
 
@@ -121,7 +128,7 @@ exports.saveUser = (userInput) => {
 
 exports.retrieveUser = (userName, callback) => {
   User.find({ username: userName }, (err, data) => {
-    if (err)  callback(err, null)
+    if (err) callback(err, null)
     callback(err, data)
   })
 };
