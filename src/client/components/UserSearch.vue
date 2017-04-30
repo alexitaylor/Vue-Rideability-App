@@ -11,7 +11,8 @@
           ></v-text-field>
         </v-col>
         <v-col xs3>
-          <div @click="handleUserSearch(user)">
+          <div
+          @click="handleUserSearch(user)">
             <v-btn
             primary
             dark
@@ -21,9 +22,9 @@
         </v-col>
       </v-row>
     </v-container>
-    <h2>{{ user }}</h2>
+    <!-- <h2>{{ user }}</h2>
     <h3>{{ getUsername }}</h3>
-    <p>{{ $store.state.userPreferences.length }} </p>
+    <p>{{ $store.state.userPreferences.length }} </p> -->
   </div>
 </template>
 

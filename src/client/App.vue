@@ -4,9 +4,10 @@
     <div>
       <img src="./assets/Octocat.png">
       <hello></hello>
-      <UserSearch></UserSearch>
+      <component :is="$store.state.currentView"></component>
+<!--       <UserSearch></UserSearch>
       <UsersPref></UsersPref>
-      <weather></weather>
+      <weather></weather> -->
     </div>
   </div>
 </template>
@@ -27,8 +28,7 @@ export default {
   },
   data () {
     return {
-      message: 'Express + Vue + MongoDB Boilerplate',
-      content: ['', 'test1', 'test2', 'test3']
+      message: 'Express + Vue + MongoDB Boilerplate'
     }
   }
 }

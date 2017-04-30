@@ -32,7 +32,8 @@ const state = {
   weather: [],
   userPreferences: '',
   data: [],
-  city: ''
+  city: '',
+  currentView: 'UserSearch'
 }
 
 // mutations are operations that actually mutates the state.
@@ -48,10 +49,15 @@ const mutations = {
   handleUserPref(state, { pref }) {
     console.log('I was clicked PREF', pref)
     state.userPreferences = pref
+    state.currentView = 'Weather'
   },
   handleCitySearch(state, { city }) {
     console.log('I was clicked WEATHER', city)
     state.city = city
+  },
+  handleComponents(state, {components}) {
+    console.log('I was clicked components')
+    state.currentView = components
   },
   setWeather: (state, { data }) => {
     console.log(data)
@@ -59,6 +65,11 @@ const mutations = {
   },
   setUserPreferences: (state, { pref }) => {
     console.log(pref)
+    if (pref.length === 0) {
+      state.currentView = 'UsersPref'
+    } else {
+      state.currentView = 'Weather'
+    }
     state.userPreferences = pref
   }
 }
@@ -69,6 +80,7 @@ const actions = {
   handleUserSearch: ({ commit }) => commit('handleUserSearch'),
   handleUserPref: ({ commit }) => commit('handleUserPref'),
   handleCitySearch: ({ commit }) => commit('handleCitySearch'),
+  handleComponents: ({ commit }) => commit('handleComponents'),
   setWeather: ({ commit }) => commit('setWeather'),
   setUserPreferences: ({ commit }) => commit('setUserPreferences'),
   getUser: ({ commit }) => {
