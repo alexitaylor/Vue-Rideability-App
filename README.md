@@ -1,5 +1,6 @@
 MVP - Rideability Weather App
 =========================================
+![alt text](https://raw.githubusercontent.com/alexitaylor/vue-mvp/src/client/assets/chainRingLogo.png)
 ## A weather app built by cyclists for cyclists ##
 
 ## Summary ##
