@@ -31,9 +31,6 @@ module.exports = {
           .get()
           .then(res => {
             var json = JSON.stringify(res.hourly)
-            // fs.writeFileSync('data.json', json)
-            // console.log(res.hourly)
-            // res.hourly
             callback(res.hourly)
             console.log('Success got weather data')
           })
@@ -44,8 +41,5 @@ module.exports = {
       .catch(err => {
         console.log(err);
       });
-  },
-  printSomething: () => {
-    console.log('testing123============================')
   }
 }

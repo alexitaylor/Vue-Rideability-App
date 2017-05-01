@@ -9,7 +9,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Cycling Weather App!'
+      msg: 'Cycling Weather App'
     }
   }
 }

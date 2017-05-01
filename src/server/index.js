@@ -81,14 +81,6 @@ app.use('/', router)
 // Save user to MongoDB
 // workers.saveUser(userPreferences)
 
-// workers.retrieveUser('Nicolas')
-let printUser;
-
-// Retrieve User from DB and renders hourly weather data w/ rideable or not attribute
-// workers.retrieveUser('Nicolas', (err, user) => {
-//   if (err) throw err
-//   console.log(workers.rideableRender(renderedMore, user[0]))
-// })
 
 app.get('/user', function(req, res) {
   console.log('GOT SOMETHING')

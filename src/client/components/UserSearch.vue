@@ -4,20 +4,11 @@
     <v-container fluid>
       <v-row row>
         <v-col xs9>
-          <v-text-field
-            name="input-1"
-            label="Enter Name"
-            v-model="user"
-          ></v-text-field>
+          <v-text-field name="input-1" label="Enter Name" v-model="user"></v-text-field>
         </v-col>
         <v-col xs3>
-          <div
-          @click="handleUserSearch(user)">
-            <v-btn
-            primary
-            dark
-            class="btn--dark-flat-focused"
-            >ENTER</v-btn>
+          <div @click="handleUserSearch(user)">
+            <v-btn primary dark class="btn--dark-flat-focused">ENTER</v-btn>
           </div>
         </v-col>
       </v-row>
@@ -27,6 +18,7 @@
     <p>{{ $store.state.userPreferences.length }} </p> -->
   </div>
 </template>
+
 
 <script>
 import { mapGetters, mapActions } from 'vuex'

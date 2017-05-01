@@ -2,7 +2,7 @@
   <div class="app full-height">
     <!-- <h1>{{ message }}</h1> -->
     <div>
-      <img src="./assets/Octocat.png">
+      <img src="./assets/chainRingLogo.png">
       <hello></hello>
       <component :is="$store.state.currentView"></component>
 <!--       <UserSearch></UserSearch>
@@ -28,7 +28,7 @@ export default {
   },
   data () {
     return {
-      message: 'Express + Vue + MongoDB Boilerplate'
+      message: 'Express + Vue + MongoDB'
     }
   }
 }
