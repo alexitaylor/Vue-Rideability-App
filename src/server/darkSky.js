@@ -26,7 +26,8 @@ module.exports = {
       })
       .then((position) => {
         forecast
-          .pos(position.long, position.lat)
+          .longitude(position.long)
+          .latitude(position.lat)
           .extendHourly(true)
           .get()
           .then(res => {
