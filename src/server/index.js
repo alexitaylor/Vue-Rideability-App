@@ -23,7 +23,7 @@ const app = express()
 // mongoose.connect('mongodb://localhost/users');
 
 // For more info: https://nodejs.org/api/process.html#process_process_env
-var mongoConnection = 'mongodb://localhost/rideable' || process.env.MONGODB_URL;
+var mongoConnection = process.env.MONGODB_URI || 'mongodb://localhost/rideable';
 if (!mongoConnection) {
   console.log("Please define MONGODB_URL environment variable");
   process.exit(1);
