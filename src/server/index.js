@@ -1,21 +1,21 @@
-import express from 'express'
-import path from 'path'
-import cookieParser from 'cookie-parser'
-import bodyParser from 'body-parser'
-import webpack from 'webpack'
-import webpackDevMiddleware from 'webpack-dev-middleware'
-import webpackHotMiddleware from 'webpack-hot-middleware'
-import fs from 'fs'
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const fs = 'fs'
 
-import darkSky from './darkSky'
-import workers from './helpers/workers'
+const darkSky = require('./darkSky');
+const workers = require('./helpers/workers');
 
-import router from './router'
-import config from '../../webpack.config'
+const router = require('./router');
+const config = require('../../webpack.config');
 
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 // grab the user model
-import User from '../database/User.model';
+const User = require('../database/User.model');
 
 const app = express()
 
